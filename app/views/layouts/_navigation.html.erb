@@ -7,12 +7,12 @@
   </li>
 </ul>
 <div class="btn-group nav_item open">
-  <a href="#" class="btn btn-small dropdown-toggle" data-toggle="dropdown">
-  Categories
-  <span class="caret"></span>
+  <a href="#" class="btn btn-small dropdown-toggle" data-toggle="dropdown">Categories  
+    <span class="caret"></span>
+    </a>
     <ul class="dropdown-menu">
       <% @categories.each do |cat| %>
-        <li><%= cat.name %></li>
+        <li><%= link_to cat.name, cat %></li>
       <% end %>
     </ul>
   </a>
