@@ -6,3 +6,14 @@
     <%= link_to "Add post", new_post_path %>
   </li>
 </ul>
+<div class="btn-group nav_item open">
+  <a href="#" class="btn btn-small dropdown-toggle" data-toggle="dropdown">
+  Categories
+  <span class="caret"></span>
+    <ul class="dropdown-menu">
+      <% @categories.each do |cat| %>
+        <li><%= cat.name %></li>
+      <% end %>
+    </ul>
+  </a>
+</div>
