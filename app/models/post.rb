@@ -3,5 +3,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :category_posts
   has_many :categories, through: :category_posts
-  validates :title, presence: true
+  has_many :comments
+  validates :title, :url, presence: true
 end
