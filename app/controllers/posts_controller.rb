@@ -1,12 +1,15 @@
 class PostsController < ApplicationController
+  before_filter :set_categories
+
+  def set_categories
+    @categories = Category.all
+  end
   def index
     @posts = Post.all
-    @categories = Category.all
   end
 
   def show
     @post = Post.find(params[:id])
-    @categories = Category.all
     @comment = Comment.new
     respond_to do |format|
       format.html # show.html.erb
@@ -16,14 +19,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @categories = Category.all
     @comment = Comment.new
   end
 
   def create
     @post = Post.new(params[:post])
     @post.user_id = 1
-    @categories = Category.all
     respond_to do |format|
       if @post.save
         format.html {redirect_to @post, notice: "post was created"}
@@ -34,8 +35,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    @categories = Category.all    
+    @post = Post.find(params[:id])   
   end
 
   def update

@@ -1,8 +1,18 @@
 <h5>Welcome to the project template!</h5>
 <h1>Posts</h1>
 <% @posts.each do |p| %>
-  <p>
-    <%= link_to p.title, p %> by <%= link_to p.user.username, user_path(p.user) %>  <%= time_ago_in_words(p.created_at) %> ago
-  </p>
+  <div class="well span8">
+  <% p.categories.each do |c| %>
+    <span class="label">
+    <%= c.name %>
+  </span>
+  <% end %>
+  <h4>
+    <%= link_to p.title, p %>
+  </h4>
+  <p><%= p.description %></p>
+  <p>Posted by <%= link_to p.user.username, user_path(p.user) %>  <%= time_ago_in_words(p.created_at) %> ago</p>
+  <small><span><%= p.comments.size %> comments</span></small>
+</div>
 <% end %>
 
