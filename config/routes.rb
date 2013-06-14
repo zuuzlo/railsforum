@@ -4,5 +4,5 @@ Postit::Application.routes.draw do
     resources :comments
   end
   resources :users
-  resource :category
+  resources :categories
 end

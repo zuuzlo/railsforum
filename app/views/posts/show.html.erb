@@ -6,6 +6,7 @@
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <div class="well span8">
+    
     <p><%= comment.body %></p>
     by <%= comment.user.username %>
   </div>
