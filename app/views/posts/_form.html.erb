@@ -12,7 +12,7 @@
   <% end %>
 
 <%= form_for @post do |f| %>
-<%= f.collection_select(:category_ids, Category.all, :id, :name) %>
+<%= f.select :category_ids, Category.all.collect{|c| [c.name, c.id]}, {}, {multiple: 'multiple'}%>
 <%= f.label :title %>
 <%= f.text_field :title %>
 <br />
