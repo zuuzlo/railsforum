@@ -12,6 +12,7 @@
   <% end %>
 
 <%= form_for @post do |f| %>
+<%= f.select(:category_ids, options_for_select(@post.categories.name)) %>
 <%= f.label :title %>
 <%= f.text_field :title %>
 <br />
