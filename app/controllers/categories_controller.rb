@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(params[:category])
 
     if @category.save
-      redirect_to '/categories', success: "category successfully created"
+      redirect_to '/categories', notice: "category successfully created"
     else
       render action: "new"
     end
@@ -43,8 +43,10 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
-
-    redirect_to category_url
+    if @category.destroy
+      redirect_to category_url, notice: "category successfully deleted"
+    else
+      render action: "destroy", error: "there was a problem deleting the message"
+    end
   end
 end

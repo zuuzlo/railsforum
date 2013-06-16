@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :set_categories
+  before_filter :find_post, only: [:show, :update, :edit, :destroy]
 
   def set_categories
     @categories = Category.all
@@ -9,7 +10,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @comment = Comment.new
     respond_to do |format|
       format.html # show.html.erb
@@ -39,8 +39,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-
+    
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -53,12 +52,18 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    
     @post.destroy
 
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end

@@ -20,12 +20,14 @@
   </div>
 <% end %>
 <div class="span8">
-  <h5>Add Comment</h5>
+  <h5>Comment on this post</h5>
 <%= form_for [@post, @comment] do |f| %>
-  <%= f.label :body %>
-  <%= f.text_area :body, :size => "60x5" %>
-  <br />
-  <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :body, "Leave a comment" %>
+    <%= f.text_area :body, rows: 3, class: 'span4' %>
+    </div>
+    <%= f.submit "Create comment", class: "btn btn-primary"  %>
+  
 <% end %>
 </div>
 
