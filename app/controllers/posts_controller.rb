@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_filter :set_categories
   before_filter :find_post, only: [:show, :update, :edit, :destroy]
+  before_filter :require_user, only: [:new, :create, :edit, :update]
 
   def set_categories
     @categories = Category.all
