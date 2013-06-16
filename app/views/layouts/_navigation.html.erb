@@ -3,6 +3,13 @@
     <%= link_to "Postit!", root_path, :class => 'brand' %>
   </li>
   <li>
-    <%= link_to "Add post", new_post_path %>
+    <%= link_to "All post", posts_path %>
   </li>
 </ul>
+
+<% if current_user %>
+<%= current_user.username %>
+<div class="nav_item">
+  <%= link_to 'New Post', new_post_path, class: "btn btn-success btn-small " %>
+</div>
+<% end %>

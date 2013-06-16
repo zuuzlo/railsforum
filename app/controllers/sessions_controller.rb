@@ -12,7 +12,12 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: "Welcome, you're logged in."
     else
       flash[:error] = "There is something wrong with your username or password"
-      redirect_to register_path
+      redirect_to login_path
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: "You've logged out."
   end
 end
