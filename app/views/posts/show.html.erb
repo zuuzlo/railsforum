@@ -14,6 +14,7 @@
 
 <div class="span8">
   <h5>Comment on this post</h5>
+<% render 'shared/errors', obj: @comment %>
 <%= form_for [@post, @comment] do |f| %>
   <div class="control-group">
     <%= f.label :body, "Leave a comment" %>
@@ -29,8 +30,6 @@
   <div class="well span8">
     
     <em><%= comment.body %></em>
-    on <%= link_to comment.post.title, post_path(comment.post) %>
-    <br />
     <span class="quiet">by</span> <%= comment.user.username %>
     <small><%= time_ago_in_words(comment.created_at) %> ago</small>
   </div>

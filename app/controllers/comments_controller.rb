@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       if @comment.save
         redirect_to post_path(@post), notice: "Your post was added."
       else
-        render "/posts/#{@post}/comments/new"
+        render 'posts/show'
       end
     
   end
