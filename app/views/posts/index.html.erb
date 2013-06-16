@@ -11,7 +11,7 @@
     <%= link_to p.title, p %>
   </h4>
   <p><%= p.description %></p>
-  <p>Posted by <%= link_to p.user.username, user_path(p.user) %>  <%= time_ago_in_words(p.created_at) %> ago</p>
+  <p>Posted by <%= link_to p.user.username %>  <%= time_ago_in_words(p.created_at) %> ago</p>
   <small><span><%= p.comments.size %> comments</span></small>
 </div>
 <% end %>

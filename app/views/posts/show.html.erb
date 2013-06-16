@@ -12,9 +12,21 @@
   <% end %>
 <hr>
 
+<h5>Comments</h5>
+<% @post.comments.each do |comment| %>
+  <div class="well span8">
+    
+    <em><%= comment.body %></em>
+    <span class="quiet">by</span> <%= comment.user.username %>
+    <small><%= time_ago_in_words(comment.created_at) %> ago</small>
+  </div>
+<% end %>
+
+
 <div class="span8">
   <h5>Comment on this post</h5>
-<% render 'shared/errors', obj: @comment %>
+<%= render 'shared/errors', obj: @comment %>
+
 <%= form_for [@post, @comment] do |f| %>
   <div class="control-group">
     <%= f.label :body, "Leave a comment" %>
@@ -25,13 +37,4 @@
 <% end %>
 </div>
 
-<h5>Comments</h5>
-<% @post.comments.each do |comment| %>
-  <div class="well span8">
-    
-    <em><%= comment.body %></em>
-    <span class="quiet">by</span> <%= comment.user.username %>
-    <small><%= time_ago_in_words(comment.created_at) %> ago</small>
-  </div>
-<% end %>
 
