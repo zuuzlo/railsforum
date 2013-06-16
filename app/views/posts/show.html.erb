@@ -11,14 +11,7 @@
   </span>
   <% end %>
 <hr>
-<h5>Comments</h5>
-<% @post.comments.each do |comment| %>
-  <div class="well span8">
-    
-    <p><%= comment.body %></p>
-    by <%= comment.user.username %>
-  </div>
-<% end %>
+
 <div class="span8">
   <h5>Comment on this post</h5>
 <%= form_for [@post, @comment] do |f| %>
@@ -30,4 +23,16 @@
   
 <% end %>
 </div>
+
+<h5>Comments</h5>
+<% @post.comments.each do |comment| %>
+  <div class="well span8">
+    
+    <em><%= comment.body %></em>
+    on <%= link_to comment.post.title, post_path(comment.post) %>
+    <br />
+    <span class="quiet">by</span> <%= comment.user.username %>
+    <small><%= time_ago_in_words(comment.created_at) %> ago</small>
+  </div>
+<% end %>
 
