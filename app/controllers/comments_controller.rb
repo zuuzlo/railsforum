@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
+  before_filter :require_user
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(params[:comment])
-    @comment.user_id = 1 #TODO fix this after authentication    
+    @comment.user = current_user   
     
     if @comment.save
       redirect_to @post, notice: "Your comment was added."

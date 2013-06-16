@@ -22,7 +22,7 @@
   </div>
 <% end %>
 
-
+<% if logged_in? %>
 <div class="span8">
   <h5>Comment on this post</h5>
 <%= render 'shared/errors', obj: @comment %>
@@ -36,5 +36,6 @@
   
 <% end %>
 </div>
+<% end %>
 
 

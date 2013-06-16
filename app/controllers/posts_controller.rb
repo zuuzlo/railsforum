@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
-    @post.user_id = 1
+    @post.user_id = current_user
     respond_to do |format|
       if @post.save
         format.html {redirect_to @post, notice: "post was created"}
