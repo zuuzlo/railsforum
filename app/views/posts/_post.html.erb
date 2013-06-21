@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="span8 well">
+    <% post.categories.each do |category| %>
+      <span class="label"><%= link_to category.name, category_path(category) %></span>
+      <% end %>
+      <h4><%= link_to post.title, post.url %></h4>
+      <p>
+        <%= post.description %>
+      </p>
+      <p>
+        <span class="quiet">posted by</span> <%= link_to post.user.username, user_path(post.url) %>
+        <small> at <%= post.created_at %></small>
+      </p>
+      <small>
+        <span>
+          <%= link_to("#{post.comments.size} comments", post_path(post)) %>
+        </span>
+      </small>
+  </div>
+</div>
