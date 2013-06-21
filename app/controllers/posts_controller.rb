@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :find_post, only: [:show, :update, :edit, :destroy]
+  before_filter :find_post, only: [:show, :update, :edit, :destroy, :vote]
   before_filter :require_user, only: [:new, :create, :edit, :update]
 
   def set_categories
@@ -59,6 +59,12 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  def vote
+    Vote.create(voteable: @post, user: current_user, vote: params[:vote])
+    flash[:notice] = "Your vote was counted"
+    redirect_to :back
   end
 
   private
