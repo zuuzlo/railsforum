@@ -2,7 +2,7 @@
   <div class="span0 well">
     <%= link_to "vote up", vote_post_path(post, vote: true), method: 'post' %>
     <br>
-    <%= post.votes.size %>
+    <%= post.total_votes %>
     <br>
     <%= link_to "vote down", vote_post_path(post, vote: false), method: 'post' %>
   </div>
