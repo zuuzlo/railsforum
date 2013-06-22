@@ -17,9 +17,9 @@
 <% @post.comments.each do |comment| %>
   <div class="row">
     <div class="well span0">
-      <%= link_to "vote up", vote_post_comment_path(@post, comment, vote: true), method: 'post' %>
+      <%= link_to '<i class="icon-arrow-up"></i>'.html_safe, vote_post_comment_path(@post, comment, vote: true), method: 'post' %>
       <br>
-      <%= link_to "vote down", vote_post_comment_path(@post, comment, vote: false), method: 'post' %>
+      <%= link_to '<i class="icon-arrow-down"></i>'.html_safe, vote_post_comment_path(@post, comment, vote: false), method: 'post' %>
     </div>
     <div class="well span8">
       <em><%= comment.body %></em>

@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="span0 well">
-    <%= link_to "vote up", vote_post_path(post, vote: true), method: 'post' %>
+  <div class="span0 well text-center">
+    <%= link_to '<i class="icon-arrow-up"></i>'.html_safe, vote_post_path(post, vote: true), method: 'post' %>
     <br>
-    <%= post.total_votes %>
+    <%= post.total_votes %> votes
     <br>
-    <%= link_to "vote down", vote_post_path(post, vote: false), method: 'post' %>
+    <%= link_to '<i class="icon-arrow-up"></i>'.html_safe, vote_post_path(post, vote: false), method: 'post' %>
   </div>
   <div class="span8 well">
     <% post.categories.each do |category| %>
