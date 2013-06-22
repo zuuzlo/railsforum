@@ -1,12 +1,8 @@
 class CategoriesController < ApplicationController
-  before_filter :set_categories
-
-  def set_categories
-    @categories = Category.all
-  end
+  before_filter :require_user, only: [:new, :edit, :update]
+  before_filter :get_categories
 
   def index
-    @categories = Category.all
   end
 
   def show
